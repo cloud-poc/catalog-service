@@ -7,8 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "products")
@@ -19,12 +22,15 @@ public class Product {
 	private String id;
 
 	@Column(nullable = false, unique = true)
+	@NotNull
+	@Length(min=3,max=20)
 	private String code;
 
 	@Column(nullable = false)
 	private String name;
 
 	@Embedded
+	@Valid
 	private Amount price;
 
 	private String description;

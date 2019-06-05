@@ -18,7 +18,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spring.cloud.version>Finchley.RELEASE</spring.cloud.version>
+		<spring.cloud.version>Greenwich.RELEASE</spring.cloud.version>
 		<swagger.version>2.9.2</swagger.version>
 		<mysql.connector.version>8.0.11</mysql.connector.version>
 		<spring.cloud.vault.version>2.0.1</spring.cloud.vault.version>
@@ -67,6 +67,10 @@
 			</dependency> <dependency> <groupId>org.springframework.cloud</groupId> <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId> 
 			</dependency><dependency> <groupId>org.springframework.cloud</groupId> <artifactId>spring-cloud-starter-openfeign</artifactId> 
 			</dependency> -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -120,11 +124,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<optional>true</optional>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>

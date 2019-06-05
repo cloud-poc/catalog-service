@@ -2,6 +2,8 @@ package org.akj.springboot.catalog.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.akj.springboot.catalog.entity.Product;
 import org.akj.springboot.catalog.service.ProductService;
 import org.akj.springboot.catalog.utils.ProductNotFoundException;
@@ -32,7 +34,7 @@ public class ProductController {
 	}
 
 	@RequestMapping(value="/product", method = RequestMethod.POST)
-	public Product add(@RequestBody Product product) {
+	public Product add(@RequestBody @Valid Product product) {
 		System.out.println(product.toString());
 		return productService.add(product);
 	}
