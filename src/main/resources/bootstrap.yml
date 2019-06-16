@@ -1,15 +1,33 @@
-spring.application.name: catalog-service
-spring.cloud.config:
-  uri:
-  - http://localhost:8888
 server.port: 9001
+    
+spring:
+  profiles:
+    active:
+    - dev
+  application.name: catalog-service
+  zipkin.base-url: ${ZIPKIN_BASE_URL:http://localhost:9411/}
+  sleuth.sampler.probability: 1
+#  cloud:
+#    config:
+#      discovery:
+#        enabled: ${CONFIG_DISCOVERY_ENABLED:false}
+#        service-id: ${CONFIG_DISCOVERY_SERVICE_ID:config-service}
+#      uri:
+#      - ${CONFIG_SERVICE_URL:http://localhost:8888}
+#    refresh.enabled: true
+#    bus:
+#      enabled: true
+  rabbitmq:
+    host: ${BUS_RABBITMQ_HOST:localhost}
+    port: ${BUS_RABBITMQ_PORT:5672}
+    username: ${BUS_RABBITMQ_USERNAME:guest}
+    password: ${BUS_RABBITMQ_PASSWORD:guest}
+
+eureka.client.service-url:
+  defaultZone: ${EUREKA_CLIENT_SERVICE_URL:http://localhost:8761/eureka/}
+  
 management:
   endpoints:
     web:
       exposure:
         include: '*'
-
-spring:
-  profiles:
-    active:
-    - default

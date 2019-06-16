@@ -6,9 +6,8 @@ import javax.validation.Valid;
 
 import org.akj.springboot.catalog.entity.Product;
 import org.akj.springboot.catalog.service.ProductService;
-import org.akj.springboot.catalog.utils.ProductNotFoundException;
+import org.akj.springboot.common.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,12 +29,11 @@ public class ProductController {
 	@RequestMapping(value = "product/{code}",method=RequestMethod.GET)
 	public Product getProductsByCode(@PathVariable String code) {
 		return productService.findProductByCode(code)
-				.orElseThrow(() -> new ProductNotFoundException("Product with code [" + code + "] doesn't exist"));
+				.orElseThrow(() -> new BusinessException("ERROR-002-003","Product with code [" + code + "] doesn't exist"));
 	}
 
 	@RequestMapping(value="/product", method = RequestMethod.POST)
 	public Product add(@RequestBody @Valid Product product) {
-		System.out.println(product.toString());
 		return productService.add(product);
 	}
 

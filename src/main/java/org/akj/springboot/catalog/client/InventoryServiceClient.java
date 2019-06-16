@@ -1,4 +1,4 @@
-package org.akj.springboot.catalog.utils;
+package org.akj.springboot.catalog.client;
 
 import java.util.Optional;
 
@@ -32,7 +32,6 @@ public class InventoryServiceClient {
 		}
 	}
 
-	@SuppressWarnings("unused")
 	Optional<InventoryResponse> getDefaultProductInventoryByCode(String productCode) {
 		InventoryResponse response = new InventoryResponse();
 		response.setProductCode(productCode);

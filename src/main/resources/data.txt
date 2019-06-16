@@ -1,0 +1,14 @@
+curl -X POST \
+  http://localhost:9001/products/product \
+  -H 'Content-Type: application/json' \
+  -H 'Postman-Token: bc82cca5-dc05-4914-b33e-8e3541f71e43' \
+  -H 'cache-control: no-cache' \
+  -d '{
+    "code": "P001",
+    "name": "MacBook Pro",
+    "description": "MacBook Pro 2018 with multi-touch bar",
+    "price": {
+        "currency": "CNY",
+        "amount": 14280
+    }
+}'

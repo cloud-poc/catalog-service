@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.akj.springboot.catalog.entity.Product;
 import org.akj.springboot.catalog.model.InventoryResponse;
 import org.akj.springboot.catalog.repository.ProductRepository;
+import org.akj.springboot.common.exception.BusinessException;
+import org.apache.logging.log4j.message.StringFormattedMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,6 +49,10 @@ public class ProductService {
 	}
 
 	public Product add(Product product) {
+		if(null != productRepository.findByCode(product.getCode())) {
+			BusinessException ex = new BusinessException("ERROR-002-002", "Product.code = '" + product.getCode() + "' exists");
+			throw ex;
+		}
 		return productRepository.save(product);
 	}
 }
