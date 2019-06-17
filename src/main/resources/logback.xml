@@ -17,7 +17,7 @@
 
    <!--  <logger name="com.memorynotfound" level="TRACE"/> -->
 
-    <root level="DEBUG">
+    <root level="WARN">
         <appender-ref ref="STDOUT" />
        <!--  <appender-ref ref="FILE" /> -->
     </root>

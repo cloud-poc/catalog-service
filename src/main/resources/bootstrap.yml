@@ -7,16 +7,16 @@ spring:
   application.name: catalog-service
   zipkin.base-url: ${ZIPKIN_BASE_URL:http://localhost:9411/}
   sleuth.sampler.probability: 1
-#  cloud:
-#    config:
-#      discovery:
-#        enabled: ${CONFIG_DISCOVERY_ENABLED:false}
-#        service-id: ${CONFIG_DISCOVERY_SERVICE_ID:config-service}
-#      uri:
-#      - ${CONFIG_SERVICE_URL:http://localhost:8888}
-#    refresh.enabled: true
-#    bus:
-#      enabled: true
+  cloud:
+    config:
+      discovery:
+        enabled: ${CONFIG_DISCOVERY_ENABLED:false}
+        service-id: ${CONFIG_DISCOVERY_SERVICE_ID:config-service}
+      uri:
+      - ${CONFIG_SERVICE_URL:http://localhost:8888}
+    refresh.enabled: true
+    bus:
+      enabled: true
   rabbitmq:
     host: ${BUS_RABBITMQ_HOST:localhost}
     port: ${BUS_RABBITMQ_PORT:5672}
