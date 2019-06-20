@@ -49,7 +49,7 @@ public class ProductService {
 	}
 
 	public Product add(Product product) {
-		if(null != productRepository.findByCode(product.getCode())) {
+		if(productRepository.findByCode(product.getCode()).isPresent()) {
 			BusinessException ex = new BusinessException("ERROR-002-002", "Product.code = '" + product.getCode() + "' exists");
 			throw ex;
 		}

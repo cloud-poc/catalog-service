@@ -20,7 +20,7 @@ public class InventoryServiceClient {
 	}
 
 	@HystrixCommand(fallbackMethod = "getDefaultProductInventoryByCode", commandProperties = {
-			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "3000"),
+			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "30000"),
 			@HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60") })
 	public Optional<InventoryResponse> getProductInventoryByCode(String productCode) {
 		ResponseEntity<InventoryResponse> itemResponseEntity = restTemplate

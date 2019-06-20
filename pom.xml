@@ -24,6 +24,7 @@
 		<spring.cloud.vault.version>2.0.1</spring.cloud.vault.version>
 		<jib.version>1.2.0</jib.version>
 		<common.version>1.0.0</common.version>
+		<zipkin.brave.mysql.version>5.6.5</zipkin.brave.mysql.version>
 	</properties>
 
 	<dependencyManagement>
@@ -104,6 +105,12 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>io.zipkin.brave</groupId>
+			<artifactId>brave-instrumentation-mysql8</artifactId>
+			<version>${zipkin.brave.mysql.version}</version>
 		</dependency>
 
 		<dependency>
