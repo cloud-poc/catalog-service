@@ -22,10 +22,10 @@ spring:
     bus:
       enabled: true
   rabbitmq:
-    host: ${BUS_RABBITMQ_HOST:localhost}
-    port: ${BUS_RABBITMQ_PORT:5672}
-    username: ${BUS_RABBITMQ_USERNAME:guest}
-    password: ${BUS_RABBITMQ_PASSWORD:guest}
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
 
 eureka.client.service-url:
   defaultZone: ${EUREKA_CLIENT_SERVICE_URL:http://localhost:8761/eureka/}
@@ -34,4 +34,5 @@ management:
   endpoints:
     web:
       exposure:
-        include: '*'
+        include: health,info,bus-refresh,hystrix.stream
+#        include: '*'
