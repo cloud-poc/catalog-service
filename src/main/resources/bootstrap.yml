@@ -36,3 +36,5 @@ management:
       exposure:
         include: health,info,bus-refresh,hystrix.stream
 #        include: '*'
+
+feign.hystrix.enabled: true

@@ -6,11 +6,13 @@ import org.akj.springboot.catalog.model.InventoryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
+//@Component
 public class InventoryServiceClient {
 	private final RestTemplate restTemplate;
 
@@ -20,8 +22,10 @@ public class InventoryServiceClient {
 	}
 
 	@HystrixCommand(fallbackMethod = "getDefaultProductInventoryByCode", commandProperties = {
-			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "30000"),
-			@HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60") })
+			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "10000"),
+			@HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "20") }, threadPoolProperties = {
+					@HystrixProperty(name = "coreSize", value = "30"),
+					@HystrixProperty(name = "maxQueueSize", value = "20") }, commandKey = "getProductInventoryByCode", groupKey = "inventory-service", threadPoolKey = "inventory-service")
 	public Optional<InventoryResponse> getProductInventoryByCode(String productCode) {
 		ResponseEntity<InventoryResponse> itemResponseEntity = restTemplate
 				.getForEntity("http://inventory-service/api/inventory/{code}", InventoryResponse.class, productCode);
