@@ -34,7 +34,9 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,bus-refresh,hystrix.stream
-#        include: '*'
-
+        include: health,info,bus-refresh,hystrix.stream,prometheus,metrics
+  metrics:
+    export.prometheus.enabled: true
+    tags.application: ${spring.application.name}
+       
 feign.hystrix.enabled: true
