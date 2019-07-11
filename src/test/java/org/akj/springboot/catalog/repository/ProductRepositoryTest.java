@@ -3,11 +3,13 @@ package org.akj.springboot.catalog.repository;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 import javax.persistence.EntityManager;
 import javax.sql.DataSource;
+import javax.transaction.Transactional;
 
 import org.akj.springboot.catalog.entity.Amount;
 import org.akj.springboot.catalog.entity.Product;
@@ -58,10 +60,13 @@ class ProductRepositoryTest {
 
 	@Test
 	final void testFindAll() {
-		fail("Not yet implemented"); // TODO
+		List<Product> products = repository.findAll();
+		
+		Assertions.assertNotNull(products);
 	}
 
 	@Test
+	@Transactional
 	final void testSave() {
 		Product product = new Product();
 		product.setCode("P010");
