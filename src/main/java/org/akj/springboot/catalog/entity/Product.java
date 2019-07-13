@@ -36,7 +36,7 @@ public class Product {
 	private String description;
 	
 	@Transient
-    private boolean inStock = true;
+    private boolean inStock = false;
 
 	public String getId() {
 		return id;
